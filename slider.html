@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    a {
+  color: #fff;
+  text-decoration: none;
+}
+
+img { 
+  width: 100%;
+}
+
+.slider {
+  position: relative;
+  width: 900px;
+  margin: auto;
+  height: 600px;
+  overflow: hidden;
+}
+
+.main-1{
+    background-color: red;
+    height: 700px;
+    width: 1000px;
+}
+
+.main-2{
+    background-color: yellow;
+    height: 700px;
+    width: 1000px;
+}
+
+.main-3{
+    background-color: blue;
+    height: 700px;
+    width: 1000px;
+}
+
+.main-4{
+    background-color: brown;
+    height: 700px;
+    width: 1000px;
+}
+
+.main-5{
+    background-color: navy;
+    height: 700px;
+    width: 1000px;
+}
+
+.slide {
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+.active {
+  transform: translateX(0%) translateZ(0);
+  transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 100;
+}
+
+.prev {
+  transform: translateX(-100%) translateZ(0);
+  transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 90;
+}
+
+.next {
+  transform: translateX(100%) translateZ(0);
+  transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 90;
+}
+
+.controls {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 110;
+  left: 0;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 32px;
+  color: rgb(255,255,255);
+}
+</style>
+<body>
+    <div class="slider">
+        <div class="slide active main-1">
+
+        </div>
+        <div class="slide next main-2">
+
+        </div>
+        <div class="slide main-3">
+
+        </div>
+        <div class="slide main-4">
+
+        </div>
+        <div class="slide prev main-5">
+
+        </div>
+        <div class="controls">
+          <a href="#" id="click-left">&#8592;</a>
+          <a href="#" id="click-right">&#8594;</a>
+        </div>
+      </div>
+
+      <script>
+        let activeSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+let left = document.querySelector('#click-left');
+
+left.onclick = function() {
+  updatePrevSlide()
+}
+
+
+let right = document.querySelector('#click-right');
+
+right.onclick = function() {
+  updateNextSlide();
+}
+
+function updateNextSlide() {
+  slides[activeSlide].classList.add("prev");
+  let nextSlide = ( activeSlide < slides.length -1) ? activeSlide+1 : 0; 
+  slides[nextSlide].classList.remove("prev");
+  slides[nextSlide].classList.remove("next");
+  slides[nextSlide].classList.add("active");
+  
+  if(nextSlide < slides.length -1){
+    slides[nextSlide+1].classList.add("next");
+    slides[nextSlide+1].classList.remove("prev");
+  }  
+  else {
+    slides[0].classList.remove("prev");
+    slides[0].classList.add("next");
+  }
+  activeSlide = nextSlide;
+}
+
+
+function updatePrevSlide() {
+  slides[activeSlide].classList.add("next");
+  let prevSlide = ( activeSlide > 0) ? activeSlide-1 : slides.length-1; 
+  slides[prevSlide].classList.remove("next");
+  slides[prevSlide].classList.remove("prev");
+  slides[prevSlide].classList.add("active");
+  
+  if(prevSlide > 0){
+     slides[prevSlide-1].classList.add("prev");
+    slides[prevSlide-1].classList.remove("next");
+  }
+  else {
+     slides[slides.length-1].classList.remove("next");
+    slides[slides.length-1].classList.add("prev");   
+  }
+  
+  activeSlide = prevSlide;
+}
+      </script>
+</body>
+</html>

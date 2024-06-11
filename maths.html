@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .main{
+        height: 500px;
+        width: 700px;
+        border: 2px solid black;
+        margin-top: 70px;
+        margin-left: 320px;
+    }
+    .div1{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .p1{
+        font-size: 25px;
+    }
+    .btn{
+        height: 50px;
+        width: 50px;
+    }
+    .button{
+        margin-left: 70px;
+        margin-top: 50px;
+    }
+    .p3{
+        font-size: 30px;
+        margin-left: 370px;
+        margin-top: -100px;
+    }
+
+
+
+</style>
+
+<body>
+    
+    <div class="main">
+
+        <center><h1>Maths Operations</h1></center>
+
+        <div class="div1">
+            <p class="p1">Enter 1st Number : </p>
+            <input type="text" id="one" size="40px" style="height: 25px;">
+        </div>
+
+        <div class="div1">
+            <p class="p1">Enter 1st Number : </p>
+            <input type="text" id="two" size="40px" style="height: 25px;">
+        </div>
+
+        <div class="button">
+            <button class="btn" onclick="sub()"> <span style="font-size: 25px;"> + </span> </button>
+            <button class="btn" onclick="min()"> <span style="font-size: 25px;"> - </span> </button>
+            <button class="btn" onclick="multi()"> <span style="font-size: 25px;"> * </span> </button>
+            <br>
+            <br>
+            <button class="btn" onclick="div()"> <span style="font-size: 25px;"> / </span> </button>
+            <button class="btn" onclick="per()"> <span style="font-size: 25px;"> % </span> </button>
+
+        </div>
+
+        <p class="p3"> Answer is : <span id="ans" style="color: blue;"></span></p>
+      
+       
+
+    </div>
+
+    <script>
+
+        function sub() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+
+            c = Number(a) + Number(b)
+
+            document.getElementById("ans").innerHTML = c;
+        }
+
+        function min() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+
+            c = Number(a) - Number(b)
+
+            document.getElementById("ans").innerHTML = c;
+        }
+
+        function multi() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+
+            c = Number(a) * Number(b)
+
+            document.getElementById("ans").innerHTML = c;
+        }
+
+        function div() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+
+            c = Number(a) / Number(b)
+
+            document.getElementById("ans").innerHTML = c;
+        }
+
+        function per() {
+            let a = document.getElementById("one").value;
+            let b = document.getElementById("two").value;
+
+            c = Number(a) % Number(b)
+
+            let total = document.getElementById("ans").innerHTML = c;
+            document.getElementById("per").innerHTML = ans / 200 * 100;
+        }
+
+    </script>
+
+</body>
+</html>
